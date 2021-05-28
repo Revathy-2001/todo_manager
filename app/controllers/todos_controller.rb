@@ -2,13 +2,14 @@ class TodosController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    render plain: Todo.order(:id).map { |todo| todo.to_pleasant_string }.join("\n")
+    #render plain: Todo.order(:id).map { |todo| todo.to_pleasant_string }.join("\n")
   end
 
   def show
-    id = params[:id]
-    todo = Todo.find_by(id: id)
-    render plain: !todo.nil? ? todo.to_pleasant_string : "OOPs!, No such Id found!!!"
+    # id = params[:id]
+    # todo = Todo.find_by(id: id)
+    # render plain: !todo.nil? ? todo.to_pleasant_string : "OOPs!, No such Id found!!!"
+    render "test1"
   end
 
   def create
