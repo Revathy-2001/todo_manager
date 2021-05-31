@@ -1,15 +1,14 @@
 <section class="TodoSection">
   <div class="TodoSection-title">
     <p class="TodoSectionTitle_text"><%= section_head %></p>
-    <% count = (section_head == "Overdue") ? "0 /" + (todos.count - todos.completed.count).to_s : todos.completed.count.to_s + " /" +  todos.count.to_s %>
-    <p class="TodoSectionTitle_remainingCount"><%= count %></p>
+    <p class="TodoSectionTitle_remainingCount"><%= (!render_completed) ? "0 /" + (todos.count - todos.completed.count).to_s : todos.completed.count.to_s + " /" +  todos.count.to_s %></p>
   </div>
 
   <ul>
     <% todos.all.each do |todo| %>
       <%# 1. Listing only incompleted todo in Overdue Section %>
-      <% if !(section_head == "Overdue" && todo.completed) %>
-        <li class="TodoItem">
+      <% if !(!render_completed && todo.completed) %>
+          <li class="TodoItem">
 
             <%# 2. Marking the completed todo's checkbox ticked %>
             <% if (todo.completed) %>
@@ -32,7 +31,7 @@
 
           </li>
       <% end %>
-      <%end%>
+    <%end%>
   </ul>
 
 </section>
