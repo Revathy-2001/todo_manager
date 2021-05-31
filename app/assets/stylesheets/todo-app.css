@@ -86,7 +86,6 @@ body {
   background-color: #f1edf7;
   max-width: fit-content;
   cursor: pointer;
-  padding: 2px;
   border-radius: 6px;
 }
 .TodoItem_delete > img {
@@ -102,6 +101,11 @@ body {
 .TodoItem_checkbox {
   width: 16px;
   height: 16px;
+  margin-right: 10px;
+}
+
+.TodoItem_completed {
+  text-decoration: line-through;
 }
 
 .TodoItem_text {
