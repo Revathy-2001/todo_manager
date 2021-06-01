@@ -6,20 +6,19 @@
 
   <ul>
     <% todos.all.each do |todo| %>
-      <%# 1. Listing only incompleted todo in Overdue Section %>
       <% if !(!render_completed && todo.completed) %>
           <li class="TodoItem">
-
-            <%# 2. Marking the completed todo's checkbox ticked %>
-            <% if (todo.completed) %>
-              <input type="checkbox" class="TodoItem_checkbox" checked/>
-            <% else %>
-              <input type="checkbox" class="TodoItem_checkbox"/>
+            <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
+              <% if (todo.completed) %>
+                <input type="checkbox" class="TodoItem_checkbox" checked name="completed" onclick = "this.form.submit()" />
+              <% else %>
+                <input type="checkbox" class="TodoItem_checkbox" name="completed" onclick = "this.form.submit()"/>
+              <% end %>
             <% end %>
 
             <%# 3.  Striking the todo which is completed %>
             <% className =  (todo.completed) ? "TodoItem_completed" : "TodoItem_Text" %>
-            <p class = <%= className %> ><%= todo.todo_text %></p>
+            <p class = <%= className %>> <%= todo.todo_text %> </p>
 
             <% if(show_due_date) %>
               <p class="TodoItem_date"><%= todo.due_date.to_s(:short) %></p>
