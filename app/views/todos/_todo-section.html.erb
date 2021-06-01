@@ -1,7 +1,7 @@
 <section class="TodoSection">
   <div class="TodoSection-title">
     <p class="TodoSectionTitle_text"><%= section_head %></p>
-    <p class="TodoSectionTitle_remainingCount"><%= (!render_completed) ? "0 /" + (todos.count - todos.completed.count).to_s : todos.completed.count.to_s + " /" +  todos.count.to_s %></p>
+    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? todos.completed.count.to_s + " /" +  todos.count.to_s :  "0 /" + (todos.count - todos.completed.count).to_s%></p>
   </div>
 
   <ul>
