@@ -25,8 +25,10 @@
             <% end %>
 
             <a href="javascript:void(0)" class="TodoItem_delete">
-              <img src="trashcan.png" alt="DeleteIcon"
-            /></a>
+              <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
+                <input type = "image" src="trashcan.png"/>
+              <% end %>
+            </a>
 
           </li>
       <% end %>
