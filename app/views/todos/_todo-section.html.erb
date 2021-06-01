@@ -1,7 +1,8 @@
 <section class="TodoSection">
   <div class="TodoSection-title">
     <p class="TodoSectionTitle_text"><%= section_head %></p>
-    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? todos.completed.count.to_s + " /" +  todos.count.to_s :  "0 /" + (todos.count - todos.completed.count).to_s%></p>
+    <% completed_count = todos.completed.count%>
+    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? "#{completed_count} /#{todos.count}" :  "0 /#{(todos.count - completed_count)}" %></p>
   </div>
 
   <ul>
@@ -9,16 +10,15 @@
       <% if !(!render_completed && todo.completed) %>
           <li class="TodoItem">
             <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
-              <% if (todo.completed) %>
-                <input type="checkbox" class="TodoItem_checkbox" checked name="completed" onclick = "this.form.submit()" />
-              <% else %>
-                <input type="checkbox" class="TodoItem_checkbox" name="completed" onclick = "this.form.submit()"/>
-              <% end %>
+                <%= check_box_tag 'completed',
+                 value = "1",
+                 checked = todo.completed ? true : false,
+                 class: 'TodoItem_checkbox',
+                 onclick:"this.form.submit()"
+                 %>
             <% end %>
 
-            <%# 3.  Striking the todo which is completed %>
-            <% className =  (todo.completed) ? "TodoItem_completed" : "TodoItem_Text" %>
-            <p class = <%= className %>> <%= todo.todo_text %> </p>
+            <p class = <%= (todo.completed) ? "TodoItem_completed" : "TodoItem_Text" %>> <%= todo.todo_text %> </p>
 
             <% if(show_due_date) %>
               <p class="TodoItem_date"><%= todo.due_date.to_s(:short) %></p>
@@ -26,7 +26,7 @@
 
             <a href="javascript:void(0)" class="TodoItem_delete">
               <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
-                <input type = "image" src="trashcan.png"/>
+               <%= image_submit_tag("trashcan.png") %>
               <% end %>
             </a>
 
