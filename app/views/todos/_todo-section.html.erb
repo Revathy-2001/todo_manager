@@ -1,7 +1,7 @@
 <section class="TodoSection">
   <div class="TodoSection-title">
     <p class="TodoSectionTitle_text"><%= section_head %></p>
-    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? todos.completed.count.to_s + " /" +  todos.count.to_s :  "0 /" + (todos.count - todos.completed.count).to_s%></p>
+    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? "#{todos.completed.count} /#{todos.count}" :  "0 /#{todos.count - todos.completed.count}" %></p>
   </div>
 
   <ul>
@@ -11,15 +11,10 @@
           <li class="TodoItem">
 
             <%# 2. Marking the completed todo's checkbox ticked %>
-            <% if (todo.completed) %>
-              <input type="checkbox" class="TodoItem_checkbox" checked/>
-            <% else %>
-              <input type="checkbox" class="TodoItem_checkbox"/>
-            <% end %>
+            <input type="checkbox" class="TodoItem_checkbox" <%= todo.completed ? "checked" : "" %> />
 
             <%# 3.  Striking the todo which is completed %>
-            <% className =  (todo.completed) ? "TodoItem_completed" : "TodoItem_Text" %>
-            <p class = <%= className %> ><%= todo.todo_text %></p>
+            <p class = <%= (todo.completed) ? "TodoItem_completed" : "TodoItem_Text" %> ><%= todo.todo_text %></p>
 
             <% if(show_due_date) %>
               <p class="TodoItem_date"><%= todo.due_date.to_s(:short) %></p>
