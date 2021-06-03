@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def new
+    render "users/new"
+  end
+
   def index
     render plain: User.order(:id).map { |user| user.show_user_details }.join("\n")
   end
