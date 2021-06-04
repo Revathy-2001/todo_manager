@@ -6,14 +6,9 @@
 
   <ul>
     <% todos.all.each do |todo| %>
-      <%# 1. Listing only incompleted todo in Overdue Section %>
-      <% if !(!render_completed && todo.completed) %>
-          <li class="TodoItem">
+       <li class="TodoItem">
 
-            <%# 2. Marking the completed todo's checkbox ticked %>
             <input type="checkbox" class="TodoItem_checkbox" <%= todo.completed ? "checked" : "" %> />
-
-            <%# 3.  Striking the todo which is completed %>
             <p class = <%= (todo.completed) ? "TodoItem_completed" : "TodoItem_Text" %> ><%= todo.todo_text %></p>
 
             <% if(show_due_date) %>
@@ -24,8 +19,7 @@
               <img src="trashcan.png" alt="DeleteIcon"
             /></a>
 
-          </li>
-      <% end %>
+       </li>
     <%end%>
   </ul>
 
