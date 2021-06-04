@@ -1,8 +1,7 @@
 <section class="TodoSection">
   <div class="TodoSection-title">
     <p class="TodoSectionTitle_text"><%= section_head %></p>
-    <% completed_count = todos.completed.count%>
-    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? "#{completed_count} /#{todos.count}" :  "0 /#{(todos.count - completed_count)}" %></p>
+    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? "#{todos.completed.count} /#{todos.count}" :  "0 /#{todos.count - todos.completed.count}" %></p>
   </div>
 
   <ul>
@@ -22,14 +21,13 @@
           <% if(show_due_date) %>
             <p class="TodoItem_date"><%= todo.due_date.to_s(:short) %></p>
           <% end %>
-
+          
           <a href="javascript:void(0)" class="TodoItem_delete">
             <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
               <%= image_submit_tag("trashcan.png") %>
             <% end %>
           </a>
-
-        </li>
+       </li>
     <%end%>
   </ul>
 
