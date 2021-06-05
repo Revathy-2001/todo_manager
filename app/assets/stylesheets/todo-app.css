@@ -37,7 +37,6 @@ body {
   margin-right: 10px;
   border: 1px solid #bfb8cc;
   border-radius: 4px;
-  max-width: 93px;
   max-height: 32px;
   outline: none;
 }
@@ -88,7 +87,7 @@ body {
   cursor: pointer;
   border-radius: 6px;
 }
-.TodoItem_delete > img {
+.TodoItem-deleteImg {
   width: 16px;
 }
 .TodoItem_delete {

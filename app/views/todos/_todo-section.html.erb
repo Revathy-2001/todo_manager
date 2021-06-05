@@ -1,31 +1,35 @@
 <section class="TodoSection">
   <div class="TodoSection-title">
     <p class="TodoSectionTitle_text"><%= section_head %></p>
-    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? "#{todos.completed.count} /#{todos.count}" :  "0 /#{todos.count - todos.completed.count}" %></p>
+    <% completed_count = todos.completed.count%>
+    <p class="TodoSectionTitle_remainingCount"><%= (render_completed) ? "#{completed_count} /#{todos.count}" :  "0 /#{(todos.count - completed_count)}" %></p>
   </div>
 
   <ul>
     <% todos.all.each do |todo| %>
-      <%# 1. Listing only incompleted todo in Overdue Section %>
-      <% if !(!render_completed && todo.completed) %>
-          <li class="TodoItem">
+        <li class="TodoItem">
+          <%= form_with(url: "/todos/#{todo.id}", method: "put") do %>
+              <%= check_box_tag 'completed',
+                value = "finished",
+                checked = todo.completed ? true : false,
+                class: 'TodoItem_checkbox',
+                onclick:"this.form.submit()"
+                %>
+          <% end %>
 
-            <%# 2. Marking the completed todo's checkbox ticked %>
-            <input type="checkbox" class="TodoItem_checkbox" <%= todo.completed ? "checked" : "" %> />
+          <p class = <%= (todo.completed) ? "TodoItem_completed" : "TodoItem_Text" %>> <%= todo.todo_text %> </p>
 
-            <%# 3.  Striking the todo which is completed %>
-            <p class = <%= (todo.completed) ? "TodoItem_completed" : "TodoItem_Text" %> ><%= todo.todo_text %></p>
+          <% if(show_due_date) %>
+            <p class="TodoItem_date"><%= todo.due_date.to_s(:short) %></p>
+          <% end %>
 
-            <% if(show_due_date) %>
-              <p class="TodoItem_date"><%= todo.due_date.to_s(:short) %></p>
+          <a href="javascript:void(0)" class="TodoItem_delete">
+            <%= form_with(url: "/todos/#{todo.id}", method: "delete") do %>
+              <%= image_submit_tag("trashcan.png",class:"TodoItem-deleteImg") %>
             <% end %>
+          </a>
 
-            <a href="javascript:void(0)" class="TodoItem_delete">
-              <img src="trashcan.png" alt="DeleteIcon"
-            /></a>
-
-          </li>
-      <% end %>
+        </li>
     <%end%>
   </ul>
 
