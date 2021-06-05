@@ -8,19 +8,19 @@
       <% end %>
       <%= render partial: "todo-section", locals: {
           section_head: "Overdue",
-          todos: Todo.overdue,
+          todos: @todos.overdue,
           show_due_date: true,
           render_completed: false,
        } %>
        <%= render partial: "todo-section", locals: {
           section_head: "Due Today",
-          todos: Todo.due_today,
+          todos: @todos.due_today,
           show_due_date: false,
           render_completed: true,
       } %>
        <%= render partial: "todo-section", locals: {
           section_head: "Due Later",
-          todos: Todo.due_later,
+          todos: @todos.due_later,
           show_due_date: true,
           render_completed: true,
       } %>
