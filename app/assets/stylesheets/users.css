@@ -1,9 +1,7 @@
-body {
-  max-width: fit-content;
-}
 .NewUsers-title {
   margin-bottom: 40px;
   font-size: 30px;
+  color: #1b8346;
 }
 
 .Form-section {

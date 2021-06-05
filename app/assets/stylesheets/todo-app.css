@@ -39,6 +39,7 @@ body {
   border-radius: 4px;
   max-height: 32px;
   outline: none;
+  cursor: pointer;
 }
 .AddTodo-button {
   background: #48bb78;
