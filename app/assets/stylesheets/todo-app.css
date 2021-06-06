@@ -103,17 +103,14 @@ body {
   height: 16px;
   margin-right: 10px;
 }
-
 .TodoItem_completed {
   text-decoration: line-through;
 }
-
 .TodoItem_text {
   margin-left: 4px;
   margin-right: 8px;
   font-size: 16px;
 }
-
 .TodoItem_date {
   font-size: 14px;
   color: #453c52;
