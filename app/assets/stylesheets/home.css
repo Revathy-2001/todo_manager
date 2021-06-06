@@ -1,0 +1,44 @@
+.Home-title {
+  font-size: 30px;
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: rgb(60, 179, 113);
+  text-align: center;
+}
+
+.Home-authenticate {
+  font-size: 16px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.UserHeader {
+  background-color: rgb(60, 179, 113, 0.8);
+  padding: 12px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  display: flex;
+  color: whitesmoke;
+  border-radius: 4px;
+  justify-content: space-between;
+}
+
+.Flash-error {
+  color: darkred;
+  margin-bottom: 20px;
+  font-size: 16px;
+  background-color: rgb(255, 7, 0, 0.5);
+  padding: 12px;
+  border-radius: 4px;
+  line-height: 1.5;
+}
+.sign_out_link {
+  color: rgb(1, 1, 250);
+  font-size: 16px;
+  text-decoration: none;
+}
+.sign_out_link:hover {
+  color: rgb(218, 39, 39);
+}
