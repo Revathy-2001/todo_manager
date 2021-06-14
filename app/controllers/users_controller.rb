@@ -20,10 +20,4 @@ class UsersController < ApplicationController
       redirect_to "/users/new"
     end
   end
-
-  def login
-    user = User.find_by(email: params[:email])
-    exist = (!user.nil? && user.password == params[:password]) ? true : false
-    render plain: exist
-  end
 end

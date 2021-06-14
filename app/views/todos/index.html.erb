@@ -2,7 +2,7 @@
       <h1 class="TodoPage-title">My Todo-List</h1>
 
       <%= form_with(url: "/todos", method: "post" , class: "AddTodo") do %>
-        <%= text_field_tag 'todo_text', nil, placeholder: "what's next ?", class: 'AddTodo-text' %>
+        <%= text_field_tag 'todo_text', nil, placeholder: "what's next ?",autofocus: true ,class: 'AddTodo-text' %>
         <%= date_field_tag 'due_date', nil, class: 'AddTodo-date' %>
         <%= submit_tag "Add", class: "AddTodo-button" %>
       <% end %>
