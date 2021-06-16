@@ -20,6 +20,8 @@ If user successfully signs-up or signs-in
 
 ![todo's display](https://user-images.githubusercontent.com/77260440/122155699-24e6a680-ce85-11eb-8144-43682a81a298.png)
 
+user can strike out the completed todo by clicking the checkbox and he can also delete the todo by clicking the delete icon.
+
 ![completed todos](https://user-images.githubusercontent.com/77260440/122155769-4e073700-ce85-11eb-94d3-6290c6dd45a6.png)
 
 If user wish to log out
